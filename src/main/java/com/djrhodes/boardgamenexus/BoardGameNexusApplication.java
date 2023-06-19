@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class BoardGameNexusApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BoardGameNexusApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BoardGameNexusApplication.class, args);
+    }
 
 }
