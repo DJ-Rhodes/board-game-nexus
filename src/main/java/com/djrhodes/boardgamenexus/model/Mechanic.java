@@ -1,8 +1,11 @@
 package com.djrhodes.boardgamenexus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Object Class for Mechanic
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Mechanic {
 
     /** The Mechanic ID */

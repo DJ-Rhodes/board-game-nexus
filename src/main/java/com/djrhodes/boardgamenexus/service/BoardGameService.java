@@ -14,11 +14,12 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class BoardGameService {
 
-    /**
-     * The Rest Template
-     */
+    /** The Rest Template */
     @Autowired
     private RestTemplate restTemplate;
+    /** The Mechanic Service */
+    @Autowired
+    private MechanicService mechanicService;
 
     /**
      * Default Constructor
@@ -46,7 +47,11 @@ public class BoardGameService {
         if (gamesNode != null && gamesNode.isArray() && gamesNode.size() > 0) {
             JsonNode gameNode = gamesNode.get(0);
             BoardGame boardGame = mapper.readValue(gameNode.toString(), BoardGame.class);
-            //TODO: Add List of Mechanics and Categories to the Board Game
+            //TODO: Add List of Categories to the Board Game
+
+            /** Adds Names to each of the Mechanics in the list */
+            boardGame.setMechanics(mechanicService.setMechanicsNames(boardGame.getMechanics()));
+
             return boardGame;
         }
 

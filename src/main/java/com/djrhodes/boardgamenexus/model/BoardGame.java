@@ -49,7 +49,6 @@ public class BoardGame {
     /** Board Game description */
     private String description;
     /** List of mechanics the game uses */
-    @JsonIgnore
     private List<Mechanic> mechanics;
     /** List of categories the game fits into */
     @JsonIgnore
