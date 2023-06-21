@@ -1,51 +1,76 @@
 package com.djrhodes.boardgamenexus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
  * Object Class for Board Games
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BoardGame {
 
     /** The ID of the Board Game */
     private String id;
     /** The name of the Board Game */
     private String name;
-    /** The MSRP in the US */
-    private double msrpUS;
-    /** The MSRP in the UK */
-    private double msrpUK;
-    /** The MSRP in AU */
-    private double msrpAU;
+    /** The price in the US */
+    @JsonProperty("price")
+    private double priceUS;
+    /** The price in the UK */
+    @JsonProperty("price_uk")
+    private double priceUK;
+    /** The price in AU */
+    @JsonProperty("price_au")
+    private double priceAU;
+    /** The price in CA */
+    @JsonProperty("price_ca")
+    private double priceCA;
     /** Year the Board Game was published */
+    @JsonProperty("year_published")
     private int publishYear;
     /** Minimum players needed */
+    @JsonProperty("min_players")
     private int minPlayers;
     /** Maximum possible players */
+    @JsonProperty("max_players")
     private int maxPlayers;
     /** Minimum playtime per game */
+    @JsonProperty("min_playtime")
     private int minPlaytime;
     /** Maximum playtime per game */
+    @JsonProperty("max_playtime")
     private int maxPlaytime;
     /** Minimum age requirement */
+    @JsonProperty("min_age")
     private int minAge;
     /** Board Game description */
     private String description;
     /** List of mechanics the game uses */
+    @JsonIgnore
     private List<Mechanic> mechanics;
     /** List of categories the game fits into */
+    @JsonIgnore
     private List<Category> categories;
     /** Primary Publisher for the Board Game */
-    private String publisher;
+    @JsonProperty("primary_publisher")
+    private Publisher publisher;
     /** Primary Designer of the Board Game */
-    private String designer;
+    @JsonProperty("primary_designer")
+    private Designer designer;
     /** URL of the official rule book */
+    @JsonProperty("rules_url")
     private String rulesURL;
     /** URL to the official website */
+    @JsonProperty("official_url")
     private String officialURL;
     /** Average user rating */
+    @JsonProperty("average_user_rating")
     private double userRating;
     /** URL to image of the game box */
+    @JsonProperty("image_url")
     private String imageURL;
 
     /**
@@ -66,16 +91,20 @@ public class BoardGame {
         return name;
     }
 
-    public double getMsrpUS() {
-        return msrpUS;
+    public double getPriceUS() {
+        return priceUS;
     }
 
-    public double getMsrpUK() {
-        return msrpUK;
+    public double getPriceUK() {
+        return priceUK;
     }
 
-    public double getMsrpAU() {
-        return msrpAU;
+    public double getPriceAU() {
+        return priceAU;
+    }
+
+    public double getPriceCA() {
+        return priceCA;
     }
 
     public int getPublishYear() {
@@ -114,11 +143,11 @@ public class BoardGame {
         return categories;
     }
 
-    public String getPublisher() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
-    public String getDesigner() {
+    public Designer getDesigner() {
         return designer;
     }
 
@@ -150,16 +179,20 @@ public class BoardGame {
         this.name = name;
     }
 
-    public void setMsrpUS(double msrpUS) {
-        this.msrpUS = msrpUS;
+    public void setPriceUS(double priceUS) {
+        this.priceUS = priceUS;
     }
 
-    public void setMsrpUK(double msrpUK) {
-        this.msrpUK = msrpUK;
+    public void setPriceUK(double priceUK) {
+        this.priceUK = priceUK;
     }
 
-    public void setMsrpAU(double msrpAU) {
-        this.msrpAU = msrpAU;
+    public void setPriceAU(double priceAU) {
+        this.priceAU = priceAU;
+    }
+
+    public void setPriceCA(double priceCA) {
+        this.priceCA = priceCA;
     }
 
     public void setPublishYear(int publishYear) {
@@ -198,11 +231,11 @@ public class BoardGame {
         this.categories = categories;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 
-    public void setDesigner(String designer) {
+    public void setDesigner(Designer designer) {
         this.designer = designer;
     }
 
