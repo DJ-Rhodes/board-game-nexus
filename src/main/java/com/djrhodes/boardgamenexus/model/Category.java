@@ -1,8 +1,12 @@
 package com.djrhodes.boardgamenexus.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Object Class for Category
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Category {
 
     /** Category ID */

@@ -20,6 +20,9 @@ public class BoardGameService {
     /** The Mechanic Service */
     @Autowired
     private MechanicService mechanicService;
+    /** The Category Service */
+    @Autowired
+    private CategoryService categoryService;
 
     /**
      * Default Constructor
@@ -47,8 +50,8 @@ public class BoardGameService {
         if (gamesNode != null && gamesNode.isArray() && gamesNode.size() > 0) {
             JsonNode gameNode = gamesNode.get(0);
             BoardGame boardGame = mapper.readValue(gameNode.toString(), BoardGame.class);
-            //TODO: Add List of Categories to the Board Game
-
+            /** Adds Names to each of the Categories in the list */
+            boardGame.setCategories(categoryService.setCategoryNames(boardGame.getCategories()));
             /** Adds Names to each of the Mechanics in the list */
             boardGame.setMechanics(mechanicService.setMechanicsNames(boardGame.getMechanics()));
 

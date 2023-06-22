@@ -51,7 +51,6 @@ public class BoardGame {
     /** List of mechanics the game uses */
     private List<Mechanic> mechanics;
     /** List of categories the game fits into */
-    @JsonIgnore
     private List<Category> categories;
     /** Primary Publisher for the Board Game */
     @JsonProperty("primary_publisher")
