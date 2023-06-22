@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Service for Board Games
  */
@@ -58,6 +61,33 @@ public class BoardGameService {
             return boardGame;
         }
 
+        return null;
+    }
+
+    /**
+     * Gets the current 5 most popular board games
+     * @return List of Board Games
+     * @throws JsonProcessingException
+     */
+    public List<BoardGame> getPopular() throws JsonProcessingException {
+        String apiUrl = "https://api.boardgameatlas.com/api/search?limit=5&order_by=rank&client_id=cVvqX5AnsC";
+        String json = restTemplate.getForObject(apiUrl, String.class);
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(json);
+        JsonNode gamesNode = root.get("games");
+
+        List<BoardGame> popularGames = new ArrayList<>();
+
+        if (gamesNode != null && gamesNode.isArray() && gamesNode.size() > 0) {
+            for(int i = 0; i < gamesNode.size(); i ++) {
+                JsonNode gameNode = gamesNode.get(i);
+                BoardGame boardGame = mapper.readValue(gameNode.toString(), BoardGame.class);
+
+                popularGames.add(boardGame);
+            }
+            return  popularGames;
+        }
         return null;
     }
 }

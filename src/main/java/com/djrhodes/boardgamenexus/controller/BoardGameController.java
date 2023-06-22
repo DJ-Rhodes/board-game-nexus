@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Rest Controller for Board Game
  */
@@ -37,5 +39,15 @@ public class BoardGameController {
     @GetMapping("/{boardGameName}")
     public BoardGame getBoardGameByName(@PathVariable("boardGameName") String name) throws JsonProcessingException {
         return boardGameService.getBoardGameByName(name);
+    }
+
+    /**
+     * Get Mapping for retrieving the current most popular board games
+     * @return Board Games List
+     * @throws JsonProcessingException
+     */
+    @GetMapping("/popular")
+    public List<BoardGame> getPopular() throws JsonProcessingException {
+        return boardGameService.getPopular();
     }
 }
