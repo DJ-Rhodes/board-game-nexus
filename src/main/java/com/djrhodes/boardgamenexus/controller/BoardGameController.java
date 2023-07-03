@@ -3,10 +3,7 @@ package com.djrhodes.boardgamenexus.controller;
 import com.djrhodes.boardgamenexus.model.BoardGame;
 import com.djrhodes.boardgamenexus.service.BoardGameService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
  * Rest Controller for Board Game
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/boardgame")
 public class BoardGameController {
 
